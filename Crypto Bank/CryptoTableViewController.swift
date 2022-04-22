@@ -29,7 +29,7 @@ class CryptoTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        //fetch table view data: icon, currency name, current price, current volume
         ExchangeRateAPIHelper.fetch{ newArray in
             self.newArray = newArray
 
@@ -37,16 +37,18 @@ class CryptoTableViewController: UITableViewController {
                 let someDict:[String: Any] = newArray[i] as! [String : Any]
 
                 for cryptoList in self.cryptoLists {
-
+                    //match the crypto list in case the api and data from API crushes
                     if someDict["asset_id"] as! String == cryptoList {
-
+                        
+                        //receive currency name
                         self.iconIDArray.append(someDict["asset_id"] as! String)
-
+                        //receive icon url string
                         let rawIcon: String = someDict["id_icon"] as! String
+                        
                         var iconUrl = rawIcon.replacingOccurrences(of: "-", with: "")
                         iconUrl = "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_64/" + iconUrl + ".png"
                         self.iconImageArray.append(iconUrl)
-
+                        //transfer NSDecimalNumber from API to decimal and add to the list
                         self.priceArray.append(NSDecimalNumber(decimal: (someDict["price_usd"] as? NSNumber)?.decimalValue ?? 0.0) as Decimal)
                         self.volumeArray.append(NSDecimalNumber(decimal: (someDict["volume_1day_usd"] as! NSNumber).decimalValue) as Decimal)
 
@@ -91,16 +93,18 @@ class CryptoTableViewController: UITableViewController {
         //Configure price
         let priceCells = priceArray[indexPath.row]
         let volumeCells = volumeArray[indexPath.row]
-
+        
+        //tranfer the decimal to string with format .x or format no point
         let priceString : String = DecimalToString(num1: priceCells,formats: "%.1f")
         let volumeString : String = DecimalToString(num1: volumeCells,formats: "%.0f")
 
         if (priceCells == 0 || volumeCells == 0) {
-
+            //in case some crypto currency has no data today
             cell.StatsPrice.text! = "Null"
             cell.TotalVol.text! = "Null"
 
         }else{
+            //set volume to million format
             cell.StatsPrice.text! = priceString
             cell.TotalVol.text! = volumeString.dropLast(6) + "M"
             //print("cell", cell.StatsPrice.text!)
@@ -169,7 +173,7 @@ class CryptoTableViewController: UITableViewController {
 //                    dst.priceDec = 0.09
         }
         if segue.destination is NewsCollectionViewController {
-            
+            //navigate to news collection view
         }
         
      

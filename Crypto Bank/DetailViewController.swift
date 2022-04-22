@@ -22,15 +22,16 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Name.text = cryptoName
-        
+        //tranfer price to string format :$ 0.00
         price.text = "$" + DecimalToString(num1: priceDec,formats: "%.2f")
 
-        // Do any additional setup after loading the view.
-                do{
-                    Icon.image = UIImage(data: try NSData(contentsOf: NSURL(string: iconUri)! as URL) as Data)
-                }catch let error{
-                    print(error)
-                }
+        
+        do{
+            Icon.image = UIImage(data: try NSData(contentsOf: NSURL(string: iconUri)! as URL) as Data)
+        }catch let error{
+            print(error)
+        }
+        //fetch history crypto data and calculate daily high and low
         DetailCryptoAPIHelper.fetch( query: cryptoName){ newArray in
             self.newArray = newArray
             let someDict:[String: Any] = newArray[0] as! [String : Any]
@@ -41,11 +42,12 @@ class DetailViewController: UIViewController {
             let price_low = NSDecimalNumber(decimal: (someDict["price_low"] as! NSNumber).decimalValue)
             let volume_traded = NSDecimalNumber(decimal: (someDict["volume_traded"] as! NSNumber).decimalValue)
             
-
+            //do calculation
             let higher: String = calculateToString(num1: price_high, num2: price_open)
             
             let lower: String = calculateToString(num1: price_open, num2: price_low)
             
+            //set stats
             self.highSt.text = higher
             self.lowSt.text = lower
             self.volSt.text = NSDecimalToString(num1: volume_traded)

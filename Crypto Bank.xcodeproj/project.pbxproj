@@ -86,8 +86,8 @@
 			children = (
 				184F852427F6916E008E599C /* AppDelegate.swift */,
 				184F852627F6916E008E599C /* SceneDelegate.swift */,
-				184F854127F7EB03008E599C /* CryptoTableViewCell.swift */,
 				184F853B27F69E85008E599C /* CryptoTableViewController.swift */,
+				184F854127F7EB03008E599C /* CryptoTableViewCell.swift */,
 				188D4B782812180700AE7B22 /* DetailViewController.swift */,
 				188D4B722811DCA900AE7B22 /* APIHelper */,
 				188D4B732811DCC200AE7B22 /* Class */,

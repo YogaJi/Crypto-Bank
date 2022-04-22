@@ -7,7 +7,7 @@
 
 import Foundation
 struct IconAPIHelper{
-    
+    //no use because the coin.API won't allow to make queries in one API > 2 times
     private static let baseURL: String = "https://rest.coinapi.io/v1/assets/icons/64"
     private static var apiKey: String = "?apikey=36264472-F1D6-4F28-82FE-72076D780687"
     private static let session: URLSession = {
