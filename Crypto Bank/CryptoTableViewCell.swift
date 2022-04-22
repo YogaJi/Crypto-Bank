@@ -13,6 +13,8 @@ class CryptoTableViewCell: UITableViewCell {
     @IBOutlet weak var TotalVol: UILabel!
     @IBOutlet weak var StatsPrice: UILabel!
     @IBOutlet weak var CryptoName: UILabel!
+    @IBOutlet weak var CryptoId: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

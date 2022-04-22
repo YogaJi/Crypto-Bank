@@ -8,9 +8,11 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    var cryptoId: String!
     var cryptoName: String!
     var iconUri: String!
     var priceDec: Decimal!
+    
     var newArray = Array<Any>()
     @IBOutlet weak var Icon: UIImageView!
     @IBOutlet weak var Name: UILabel!
@@ -32,7 +34,7 @@ class DetailViewController: UIViewController {
             print(error)
         }
         //fetch history crypto data and calculate daily high and low
-        DetailCryptoAPIHelper.fetch( query: cryptoName){ newArray in
+        DetailCryptoAPIHelper.fetch( query: cryptoId){ newArray in
             self.newArray = newArray
             let someDict:[String: Any] = newArray[0] as! [String : Any]
             

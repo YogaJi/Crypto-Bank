@@ -10,13 +10,13 @@ import UIKit
 class CryptoTableViewController: UITableViewController {
     
     //set of crypto name array list
-    var cryptoLists : Array = ["BTC","DOGE","ETH","LUNA","SHIB","AVAX","DOT","GMT","APE","LINK"]
+    var cryptoLists : Array = ["BTC","DOGE","ETH","LUNA","SHIB","AVAX","DOT","GMT","APE","LINK","STX","WAVES","BCH","BCHSV","XZC","DATA","BUSD","BEAM","XTZ","REN","QTUM","NKN","BTG","BAT"]
 
     //receive ExchangeRateAPIHelper response
     var newArray2 = Array<Any>()
     var volumeArray = [Decimal]()
     var priceArray = [Decimal]()
-    
+    var nameArray = [String]()
     
     //receive IconAPIHelper response
     var newArray = Array<Any>()
@@ -40,6 +40,7 @@ class CryptoTableViewController: UITableViewController {
                     //match the crypto list in case the api and data from API crushes
                     if someDict["asset_id"] as! String == cryptoList {
                         
+                        self.nameArray.append(someDict["name"] as! String)
                         //receive currency name
                         self.iconIDArray.append(someDict["asset_id"] as! String)
                         //receive icon url string
@@ -80,9 +81,11 @@ class CryptoTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "crypto", for: indexPath) as! CryptoTableViewCell
 
         // Configure name
-    
-        let nameCells = iconIDArray[indexPath.row]
+        let nameCells = nameArray[indexPath.row]
         cell.CryptoName.text = nameCells
+        
+        let idCells = iconIDArray[indexPath.row]
+        cell.CryptoId.text = idCells
         // Configure image
         do{
             cell.IconImage.image = UIImage(data: try NSData(contentsOf: NSURL(string: iconImageArray[indexPath.row])! as URL) as Data)
@@ -97,12 +100,13 @@ class CryptoTableViewController: UITableViewController {
         //tranfer the decimal to string with format .x or format no point
         let priceString : String = DecimalToString(num1: priceCells,formats: "%.1f")
         let volumeString : String = DecimalToString(num1: volumeCells,formats: "%.0f")
-
-        if (priceCells == 0 || volumeCells == 0) {
-            //in case some crypto currency has no data today
+        
+        //in case some crypto currency has no data today
+        if (priceCells == 0) {
+           
             cell.StatsPrice.text! = "Null"
+        }else if(volumeCells == 0){
             cell.TotalVol.text! = "Null"
-
         }else{
             //set volume to million format
             cell.StatsPrice.text! = priceString
@@ -160,13 +164,14 @@ class CryptoTableViewController: UITableViewController {
        
         if let dst = segue.destination as? DetailViewController  {
             let index = tableView.indexPathForSelectedRow!.row
-                    let selectedCrypto = iconIDArray[index].self
-                    let selectedIcon = iconImageArray[index].self
-                    let selectedPri = priceArray[index].self
-
-                    dst.cryptoName = selectedCrypto
-                    dst.iconUri = selectedIcon
-                    dst.priceDec = selectedPri
+            let selectedId = iconIDArray[index].self
+            let selectedCrypto = nameArray[index].self
+            let selectedIcon = iconImageArray[index].self
+            let selectedPri = priceArray[index].self
+            dst.cryptoId = selectedId
+            dst.cryptoName = selectedCrypto
+            dst.iconUri = selectedIcon
+            dst.priceDec = selectedPri
                     
 //                    dst.cryptoName = "selectedCrypto"
 //                         dst.iconUri = "selectedIcon"
