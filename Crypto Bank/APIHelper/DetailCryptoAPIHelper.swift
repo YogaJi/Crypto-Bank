@@ -6,18 +6,19 @@
 //
 
 import Foundation
-struct ExAPI{
+struct DetailCryptoAPIHelper{
     
-    private static let baseURL: String = "https://api.blockchain.com/v3/exchange/tickers"
-  
+    private static let baseURL: String = "https://rest.coinapi.io/v1/ohlcv/BINANCE_SPOT_"
+    private static let apiKey = "_USDT/latest?apikey=E8A2D33E-977F-4A11-BA1F-05BB338AEF95&period_id=1DAY"
+    
     private static let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
     }()
 
-    static func fetch(callback: @escaping (Array<Any>) -> Void){
+    static func fetch(query: String ,callback: @escaping (Array<Any>) -> Void){
         guard
-            let url = URL(string: baseURL)
+            let url = URL(string: baseURL + query + apiKey)
         else{return}
         
         let request = URLRequest(url: url)

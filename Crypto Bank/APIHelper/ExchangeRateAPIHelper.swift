@@ -9,7 +9,7 @@ import Foundation
 struct ExchangeRateAPIHelper{
     
     private static let baseURL: String = "https://rest.coinapi.io/v1/assets"
-    private static var apiKey: String = "?apikey=0DEB865A-360B-49B6-841C-811224CFCB2F&history?period_id=1DAY"
+    private static var apiKey: String = "?apikey=E8A2D33E-977F-4A11-BA1F-05BB338AEF95&history?period_id=1DAY"
     private static let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)

@@ -18,8 +18,15 @@
 		184F854027F69F12008E599C /* ExchangeRateAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F853F27F69F12008E599C /* ExchangeRateAPIHelper.swift */; };
 		184F854227F7EB03008E599C /* CryptoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F854127F7EB03008E599C /* CryptoTableViewCell.swift */; };
 		188D4B44280FB73D00AE7B22 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B43280FB73D00AE7B22 /* Crypto.swift */; };
-		188D4B712811DC9A00AE7B22 /* DetailCryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B702811DC9A00AE7B22 /* DetailCryptoViewController.swift */; };
-		188D4B752811F37300AE7B22 /* ExAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B742811F37300AE7B22 /* ExAPI.swift */; };
+		188D4B752811F37300AE7B22 /* DetailCryptoAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B742811F37300AE7B22 /* DetailCryptoAPIHelper.swift */; };
+		188D4B792812180700AE7B22 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B782812180700AE7B22 /* DetailViewController.swift */; };
+		188D4B7F2812322900AE7B22 /* calculateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B7E2812322900AE7B22 /* calculateToString.swift */; };
+		188D4B822812340900AE7B22 /* NSDecimalToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B812812340900AE7B22 /* NSDecimalToString.swift */; };
+		188D4B842812362D00AE7B22 /* DecimalToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B832812362D00AE7B22 /* DecimalToString.swift */; };
+		188D4B882812445900AE7B22 /* NewsAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B872812445900AE7B22 /* NewsAPIHelper.swift */; };
+		188D4B8A281244B500AE7B22 /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B89281244B500AE7B22 /* NewsCollectionViewController.swift */; };
+		188D4B8C2812450D00AE7B22 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B8B2812450D00AE7B22 /* DetailCollectionViewCell.swift */; };
+		188D4B8E28124A1700AE7B22 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D4B8D28124A1700AE7B22 /* News.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +43,15 @@
 		184F853F27F69F12008E599C /* ExchangeRateAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateAPIHelper.swift; sourceTree = "<group>"; };
 		184F854127F7EB03008E599C /* CryptoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewCell.swift; sourceTree = "<group>"; };
 		188D4B43280FB73D00AE7B22 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
-		188D4B702811DC9A00AE7B22 /* DetailCryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCryptoViewController.swift; sourceTree = "<group>"; };
-		188D4B742811F37300AE7B22 /* ExAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExAPI.swift; sourceTree = "<group>"; };
+		188D4B742811F37300AE7B22 /* DetailCryptoAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCryptoAPIHelper.swift; sourceTree = "<group>"; };
+		188D4B782812180700AE7B22 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		188D4B7E2812322900AE7B22 /* calculateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculateToString.swift; sourceTree = "<group>"; };
+		188D4B812812340900AE7B22 /* NSDecimalToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDecimalToString.swift; sourceTree = "<group>"; };
+		188D4B832812362D00AE7B22 /* DecimalToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalToString.swift; sourceTree = "<group>"; };
+		188D4B872812445900AE7B22 /* NewsAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIHelper.swift; sourceTree = "<group>"; };
+		188D4B89281244B500AE7B22 /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
+		188D4B8B2812450D00AE7B22 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		188D4B8D28124A1700AE7B22 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +86,15 @@
 			children = (
 				184F852427F6916E008E599C /* AppDelegate.swift */,
 				184F852627F6916E008E599C /* SceneDelegate.swift */,
-				184F853B27F69E85008E599C /* CryptoTableViewController.swift */,
 				184F854127F7EB03008E599C /* CryptoTableViewCell.swift */,
+				184F853B27F69E85008E599C /* CryptoTableViewController.swift */,
+				188D4B782812180700AE7B22 /* DetailViewController.swift */,
 				188D4B722811DCA900AE7B22 /* APIHelper */,
 				188D4B732811DCC200AE7B22 /* Class */,
-				188D4B702811DC9A00AE7B22 /* DetailCryptoViewController.swift */,
+				188D4B802812323800AE7B22 /* Function */,
 				184F852A27F6916E008E599C /* Main.storyboard */,
+				188D4B89281244B500AE7B22 /* NewsCollectionViewController.swift */,
+				188D4B8B2812450D00AE7B22 /* DetailCollectionViewCell.swift */,
 				184F853027F69170008E599C /* Assets.xcassets */,
 				184F853227F69170008E599C /* LaunchScreen.storyboard */,
 				184F853527F69170008E599C /* Info.plist */,
@@ -90,8 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				184F853D27F69EFD008E599C /* IconAPIHelper.swift */,
-				188D4B742811F37300AE7B22 /* ExAPI.swift */,
+				188D4B742811F37300AE7B22 /* DetailCryptoAPIHelper.swift */,
 				184F853F27F69F12008E599C /* ExchangeRateAPIHelper.swift */,
+				188D4B872812445900AE7B22 /* NewsAPIHelper.swift */,
 			);
 			path = APIHelper;
 			sourceTree = "<group>";
@@ -100,8 +118,19 @@
 			isa = PBXGroup;
 			children = (
 				188D4B43280FB73D00AE7B22 /* Crypto.swift */,
+				188D4B8D28124A1700AE7B22 /* News.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		188D4B802812323800AE7B22 /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				188D4B812812340900AE7B22 /* NSDecimalToString.swift */,
+				188D4B7E2812322900AE7B22 /* calculateToString.swift */,
+				188D4B832812362D00AE7B22 /* DecimalToString.swift */,
+			);
+			path = Function;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,15 +204,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188D4B792812180700AE7B22 /* DetailViewController.swift in Sources */,
 				188D4B44280FB73D00AE7B22 /* Crypto.swift in Sources */,
-				188D4B752811F37300AE7B22 /* ExAPI.swift in Sources */,
+				188D4B7F2812322900AE7B22 /* calculateToString.swift in Sources */,
+				188D4B8C2812450D00AE7B22 /* DetailCollectionViewCell.swift in Sources */,
+				188D4B752811F37300AE7B22 /* DetailCryptoAPIHelper.swift in Sources */,
 				184F854027F69F12008E599C /* ExchangeRateAPIHelper.swift in Sources */,
+				188D4B822812340900AE7B22 /* NSDecimalToString.swift in Sources */,
+				188D4B842812362D00AE7B22 /* DecimalToString.swift in Sources */,
 				184F853E27F69EFD008E599C /* IconAPIHelper.swift in Sources */,
 				184F852F27F6916E008E599C /* Crypto_Bank.xcdatamodeld in Sources */,
+				188D4B8A281244B500AE7B22 /* NewsCollectionViewController.swift in Sources */,
 				184F853C27F69E85008E599C /* CryptoTableViewController.swift in Sources */,
-				188D4B712811DC9A00AE7B22 /* DetailCryptoViewController.swift in Sources */,
 				184F852527F6916E008E599C /* AppDelegate.swift in Sources */,
+				188D4B882812445900AE7B22 /* NewsAPIHelper.swift in Sources */,
 				184F852727F6916E008E599C /* SceneDelegate.swift in Sources */,
+				188D4B8E28124A1700AE7B22 /* News.swift in Sources */,
 				184F854227F7EB03008E599C /* CryptoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

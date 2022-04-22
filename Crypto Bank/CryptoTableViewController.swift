@@ -10,8 +10,8 @@ import UIKit
 class CryptoTableViewController: UITableViewController {
     
     //set of crypto name array list
-    var cryptoLists : Array = ["BTC","TOR","KST","BTS","NXT","ARI","BITSD","RED"]
-    //var cryptoLists : Array = ["BTC","TOR","KST"]
+    var cryptoLists : Array = ["BTC","DOGE","ETH","LUNA","SHIB","AVAX","DOT","GMT","APE","LINK"]
+
     //receive ExchangeRateAPIHelper response
     var newArray2 = Array<Any>()
     var volumeArray = [Decimal]()
@@ -33,19 +33,15 @@ class CryptoTableViewController: UITableViewController {
         ExchangeRateAPIHelper.fetch{ newArray in
             self.newArray = newArray
 
-            for i in 0...50 {
+            for i in 0...5000 {
                 let someDict:[String: Any] = newArray[i] as! [String : Any]
 
                 for cryptoList in self.cryptoLists {
 
                     if someDict["asset_id"] as! String == cryptoList {
 
-
-//                        let volume = NSDecimalNumber(decimal: (someDict["volume_1day_usd"] as! NSNumber).decimalValue)
-//
-//                        let price = NSDecimalNumber(decimal: (someDict["price_usd"] as? NSNumber)?.decimalValue ?? 0.0)
                         self.iconIDArray.append(someDict["asset_id"] as! String)
-                        
+
                         let rawIcon: String = someDict["id_icon"] as! String
                         var iconUrl = rawIcon.replacingOccurrences(of: "-", with: "")
                         iconUrl = "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_64/" + iconUrl + ".png"
@@ -61,28 +57,6 @@ class CryptoTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         }// end of  Exchange Rate APIHelper
-        
-//        ExAPI.fetch{newArray2 in
-//            self.newArray2 = newArray2
-//
-//        }
-        
-//        IconAPIHelper.fetch{newArray in
-//            self.newArray = newArray
-//
-//            //let ind = 0
-//            for i in 0...10 {
-//                let someDict:[String: String] = newArray[i] as! [String : String]
-//                for cryptoList in self.cryptoLists {
-//                    if someDict["asset_id"] == cryptoList {
-//
-//                        self.iconIDArray.append(someDict["asset_id"]!)
-//                        self.iconImageArray.append(someDict["url"]!)
-//                    }
-//                }
-//            }
-//            self.tableView.reloadData()
-//        }// end of Icon APIHelper
         
         
     }
@@ -114,16 +88,21 @@ class CryptoTableViewController: UITableViewController {
             print(error)
         }
 
-        //////////
-        // Configure price
+        //Configure price
         let priceCells = priceArray[indexPath.row]
         let volumeCells = volumeArray[indexPath.row]
+
+        let priceString : String = DecimalToString(num1: priceCells,formats: "%.1f")
+        let volumeString : String = DecimalToString(num1: volumeCells,formats: "%.0f")
+
         if (priceCells == 0 || volumeCells == 0) {
+
             cell.StatsPrice.text! = "Null"
             cell.TotalVol.text! = "Null"
+
         }else{
-            cell.StatsPrice.text! = NSDecimalNumber(decimal: priceCells).stringValue
-            cell.TotalVol.text! = NSDecimalNumber(decimal: volumeCells).stringValue
+            cell.StatsPrice.text! = priceString
+            cell.TotalVol.text! = volumeString.dropLast(6) + "M"
             //print("cell", cell.StatsPrice.text!)
         }
         
@@ -174,6 +153,27 @@ class CryptoTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+       
+        if let dst = segue.destination as? DetailViewController  {
+            let index = tableView.indexPathForSelectedRow!.row
+                    let selectedCrypto = iconIDArray[index].self
+                    let selectedIcon = iconImageArray[index].self
+                    let selectedPri = priceArray[index].self
+
+                    dst.cryptoName = selectedCrypto
+                    dst.iconUri = selectedIcon
+                    dst.priceDec = selectedPri
+                    
+//                    dst.cryptoName = "selectedCrypto"
+//                         dst.iconUri = "selectedIcon"
+//                    dst.priceDec = 0.09
+        }
+        if segue.destination is NewsCollectionViewController {
+            
+        }
+        
+     
+
     }
     
 
