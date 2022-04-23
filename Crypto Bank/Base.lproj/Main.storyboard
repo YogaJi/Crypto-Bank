@@ -195,16 +195,8 @@
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="TAA-Iz-Hch">
-                                            <rect key="frame" x="32" y="10" width="20" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="20" id="XIj-m7-qSM"/>
-                                                <constraint firstAttribute="height" constant="20" id="vpT-Ie-ysf"/>
-                                            </constraints>
-                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="TAA-Iz-Hch" firstAttribute="centerY" secondItem="v2v-Vw-qgA" secondAttribute="centerY" id="2ps-kI-DAG"/>
                                         <constraint firstAttribute="bottom" secondItem="0yT-gx-Ehc" secondAttribute="bottom" constant="4.5" id="3l0-fO-w75"/>
                                         <constraint firstItem="CJB-gq-y5e" firstAttribute="firstBaseline" secondItem="0Db-Xl-gZ5" secondAttribute="firstBaseline" constant="-11" id="7UY-EG-0Nt"/>
                                         <constraint firstItem="v2v-Vw-qgA" firstAttribute="leading" secondItem="Mkx-In-bKW" secondAttribute="leadingMargin" id="7wU-5J-654"/>
@@ -227,7 +219,6 @@
                                     <outlet property="IconImage" destination="v2v-Vw-qgA" id="FBH-hQ-Wqe"/>
                                     <outlet property="StatsPrice" destination="0Db-Xl-gZ5" id="Tkg-aO-UwI"/>
                                     <outlet property="TotalVol" destination="b04-m9-Ftm" id="ExO-4o-bRA"/>
-                                    <outlet property="spinner" destination="TAA-Iz-Hch" id="ask-UU-vOn"/>
                                     <segue destination="MGP-hQ-8yD" kind="show" identifier="dst" id="LOa-pJ-58s"/>
                                 </connections>
                             </tableViewCell>

@@ -12,4 +12,5 @@ class DetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var image: UIImageView!
+    
 }

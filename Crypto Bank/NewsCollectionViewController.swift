@@ -13,23 +13,36 @@ class NewsCollectionViewController: UICollectionViewController {
     var newsList = [NewsList]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        fetchNewsList{ newsListResult in
-        switch newsListResult {
-            case .success( let array):
-                self.newsList = array
-            self.collectionView.reloadData()
-            case .failure( let error):
-                print(error)
-             }
-            
+        var indicator = UIActivityIndicatorView()
+        
+        func activityIndicator() {
+            indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+            indicator.style = UIActivityIndicatorView.Style.large
+            indicator.color = .gray
+            indicator.center = self.view.center
+            self.view.addSubview(indicator)
+            fetchNews()
         }
+        //Initializing the Activity Indicator
+        activityIndicator()
+        //Starting the Activity Indicator
+        indicator.startAnimating()
+        
+        //func fetch news includes fetch news API and stop spinner animation
+        func fetchNews(){
+            fetchNewsList{ newsListResult in
+            switch newsListResult {
+                case .success( let array):
+                    self.newsList = array
+                self.collectionView.reloadData()
+                case .failure( let error):
+                    print(error)
+                 }
+                indicator.stopAnimating()
+            }
+        }
+
         // Do any additional setup after loading the view.
     }
 
@@ -64,6 +77,7 @@ class NewsCollectionViewController: UICollectionViewController {
         cell.content.text = newsList[indexPath.row].description
 
         do{
+  
             cell.image.image = UIImage(data: try NSData(contentsOf: NSURL(string: newsList[indexPath.row].urlToImage)! as URL) as Data)
                 }catch let error{
                     print(error)
