@@ -9,7 +9,7 @@ import Foundation
 struct DetailCryptoAPIHelper{
     
     private static let baseURL: String = "https://rest.coinapi.io/v1/ohlcv/BINANCE_SPOT_"
-    private static let apiKey = "_USDT/latest?apikey=37B15F30-3A5C-4562-B58A-CCA4A3E419D2&period_id=1DAY"
+    private static let apiKey = "_USDT/latest?apikey=0DEB865A-360B-49B6-841C-811224CFCB2F&period_id=1DAY"
     
     private static let session: URLSession = {
         let config = URLSessionConfiguration.default

@@ -29,8 +29,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func clickToAddData(_ sender: Any) {
   
-        print("save high",highSt.text!)
-        print("save low",lowSt.text!)
+        //use coredata function to save the array of core data attribute
         CoreDataFetchObj.addData(name: self.cryptoName,img: self.iconUri, price: price.text!, high: highSt.text!, low: lowSt.text!, date: dateSt )
     
     }

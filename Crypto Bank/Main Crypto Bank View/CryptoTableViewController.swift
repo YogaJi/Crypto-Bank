@@ -191,9 +191,6 @@ class CryptoTableViewController: UITableViewController {
             dst.iconUri = selectedIcon
             dst.priceDec = selectedPri
                     
-//                    dst.cryptoName = "selectedCrypto"
-//                         dst.iconUri = "selectedIcon"
-//                    dst.priceDec = 0.09
         }
         if segue.destination is NewsCollectionViewController {
             //navigate to news collection view

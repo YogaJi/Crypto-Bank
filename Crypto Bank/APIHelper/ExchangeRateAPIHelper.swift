@@ -9,7 +9,7 @@ import Foundation
 struct ExchangeRateAPIHelper{
     
     private static let baseURL: String = "https://rest.coinapi.io/v1/assets"
-    private static var apiKey: String = "?apikey=37B15F30-3A5C-4562-B58A-CCA4A3E419D2&history?period_id=1DAY"
+    private static var apiKey: String = "?apikey=0DEB865A-360B-49B6-841C-811224CFCB2F&history?period_id=1DAY"
     private static let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
@@ -32,23 +32,7 @@ struct ExchangeRateAPIHelper{
                         let jsonDictionary2 = jsonObject2 as? Array<Any>
 
                     else {preconditionFailure("could not parse JSOn data")}
-                    //print(jsonDictionary[1])
                     
-//                    var newArray = Array<Any>()
-//                    newArray.append(jsonDictionary[1])
-//                    //for i in 0...10 {
-//                        let someDict:[String: Any] = jsonDictionary[1] as! [String : Any]
-//                        print(someDict["volume_1day_usd"]!)
-//                        print(someDict["price_usd"]!)
-                    //}
-                    
-                    //var newArray = [String]()
-                   
-//                    for i in 0..<jsonDictionary.count {
-//                       let item = jsonDictionary[i]
-//                        newArray.append(item as! String)
-//                    }
-//                    print(newArray[1])
                     OperationQueue.main.addOperation {
                         callback(jsonDictionary2)
                     }

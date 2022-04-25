@@ -11,17 +11,16 @@ import CoreData
 class MyListTableViewController: UITableViewController {
     
     var CoreDataFetchObj = CoreDataFetch()
-
+    //create the newArray to receive data array
     var newArray = [(cyname: String, cyimg: String, cyprice: String, cylow: String, cyhigh: String, cydate: String)]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //fetch data from the core data and save
         CoreDataFetchObj.fetchData{
             newArray in
                 self.newArray = newArray
         }
- 
-        //fetch current crypto data for user list
         
         self.tableView.reloadData()
     }
@@ -46,7 +45,7 @@ class MyListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mylistcell", for: indexPath) as! MyListTableViewCell
         
-//        let cryptoData = fetchedResultsController?.object(at: indexPath)
+        //load data from the array fetching from the coredata
         cell.cryptoName.text! = newArray[indexPath.row].cyname
         
         let imgUri = newArray[indexPath.row].cyimg

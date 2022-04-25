@@ -8,7 +8,7 @@
 import Foundation
 
 func getDate() -> String{
-    
+    //set date type in the detail view controller, in order to be saved in the core data
     let date = Date()
     let df = DateFormatter()
     df.dateFormat = "MM/dd"

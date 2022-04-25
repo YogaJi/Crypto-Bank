@@ -417,7 +417,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7z-l7-MEJ">
                                         <rect key="frame" x="80" y="0.0" width="221.5" height="64"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="zhf-IH-dFl"/>
+                                            <constraint firstAttribute="height" constant="64" id="ZTj-Wb-rP3"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" red="0.1649305556" green="0.1649305556" blue="0.1649305556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -437,6 +437,12 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="8cb-za-QrQ" firstAttribute="leading" secondItem="s7z-l7-MEJ" secondAttribute="trailing" id="3Rv-Ao-x0o"/>
+                                    <constraint firstItem="s7z-l7-MEJ" firstAttribute="leading" secondItem="bEt-Os-WPR" secondAttribute="trailing" id="GYy-fd-2r6"/>
+                                    <constraint firstItem="s7z-l7-MEJ" firstAttribute="leading" secondItem="bEt-Os-WPR" secondAttribute="trailing" id="tAg-yg-mIB"/>
+                                    <constraint firstItem="8cb-za-QrQ" firstAttribute="leading" secondItem="s7z-l7-MEJ" secondAttribute="trailing" id="wmX-6a-KlN"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="43c-gN-hLw">
                                 <rect key="frame" x="27.5" y="172" width="381.5" height="155"/>

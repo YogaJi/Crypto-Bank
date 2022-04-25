@@ -34,21 +34,6 @@ struct IconAPIHelper{
                     else {preconditionFailure("could not parse JSOn data")}
                     //print(jsonDictionary[0])
                     
-//                    var newArray = Array<Any>()
-//                    newArray.append(jsonDictionary[0])
-//                    for i in 0...10 {
-//                        let someDict:[String: String] = jsonDictionary[i] as! [String : String]
-//                        print(someDict["url"]!)
-//                        print(someDict["asset_id"]!)
-//                    }
-                    
-                    //var newArray = [String]()
-                   
-//                    for i in 0..<jsonDictionary.count {
-//                       let item = jsonDictionary[i]
-//                        newArray.append(item as! String)
-//                    }
-//                    print(newArray[1])
                     OperationQueue.main.addOperation {
                         callback(jsonDictionary1)
                     }

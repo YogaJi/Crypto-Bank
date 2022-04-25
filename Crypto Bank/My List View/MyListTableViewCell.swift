@@ -14,7 +14,6 @@ class MyListTableViewCell: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var cryptoImage: UIImageView!
     @IBOutlet weak var cryptoName: UILabel!
-    
     @IBOutlet weak var dateSt: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

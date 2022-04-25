@@ -9,13 +9,13 @@ import Foundation
 import CoreData
 import UIKit
 class CoreDataFetch : NSObject{
-    
+    //add data to the core data
     func addData (name: String, img: String, price: String, high: String, low: String, date: String){
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate
         else {return}
     
         let viewContext = appdelegate.persistentContainer.viewContext
-        
+        //set entity and set value types to be saved in the setting manner
         if let cryptoEntity = NSEntityDescription.entity(forEntityName: "Cryptos", in: viewContext){
             let crypData = NSManagedObject(entity: cryptoEntity, insertInto: viewContext)
             crypData.setValue(img, forKey: "cryptoImg")
@@ -35,7 +35,7 @@ class CoreDataFetch : NSObject{
             }
         }
     }
-    
+    //load data from core data
     func fetchData( callback: @escaping ([(String,String,String,String,String,String)]) -> Void){
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate
         else {return}
@@ -45,8 +45,7 @@ class CoreDataFetch : NSObject{
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Cryptos")
         do{
             let crypData = try viewContext.fetch(fetchRequest)
-            //var newArray = [String]()
-            //var newDic = [String:String]()
+            //set an array to receive data from the coredata and structure them in an array
             var newArray = [(cyname: String, cyimg: String, cyprice: String, cylow: String, cyhigh: String, cydate: String)]()
             
             for (index, crypData) in crypData.enumerated(){
@@ -58,10 +57,8 @@ class CoreDataFetch : NSObject{
                 let date: String = crypData.value(forKey: "date") as! String
                 
                 newArray.append((cyname: name, cyimg: img, cyprice: price, cylow: low, cyhigh: high, cydate: date))
-                //newDic[name] = img
-                //newDic.updateValue(img, forKey: name)
-                //newArray.append(crypData.value(forKey: "cryptoName") as! String)
             }
+            //send back the array
             callback(newArray)
         }catch let error as NSError{
             print("not fetch==\(error),\(error.userInfo)")
