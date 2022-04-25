@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
+    var persistentContainer: NSPersistentContainer!
     var cryptoId: String!
     var cryptoName: String!
     var iconUri: String!
     var priceDec: Decimal!
+    var dateSt: String!
     
     var newArray = Array<Any>()
     @IBOutlet weak var Icon: UIImageView!
@@ -21,18 +24,31 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var lowSt: UILabel!
     @IBOutlet weak var volSt: UILabel!
+    
+    var CoreDataFetchObj = CoreDataFetch()
+    
+    @IBAction func clickToAddData(_ sender: Any) {
+  
+        print("save high",highSt.text!)
+        print("save low",lowSt.text!)
+        CoreDataFetchObj.addData(name: self.cryptoName,img: self.iconUri, price: price.text!, high: highSt.text!, low: lowSt.text!, date: dateSt )
+    
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         Name.text = cryptoName
         //tranfer price to string format :$ 0.00
         price.text = "$" + DecimalToString(num1: priceDec,formats: "%.2f")
-
+        
+        self.dateSt = getDate()
         
         do{
             Icon.image = UIImage(data: try NSData(contentsOf: NSURL(string: iconUri)! as URL) as Data)
         }catch let error{
             print(error)
         }
+        
         //fetch history crypto data and calculate daily high and low
         DetailCryptoAPIHelper.fetch( query: cryptoId){ newArray in
             self.newArray = newArray
@@ -55,6 +71,7 @@ class DetailViewController: UIViewController {
             self.volSt.text = NSDecimalToString(num1: volume_traded)
             print("higher",higher)
             print("lower", lower)
+            
             }
     }
     
